@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather app</title>
+    <script src="https://kit.fontawesome.com/56d84fb067.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap&subset=latin-ext"
+        rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container-fluid main">
+        <div class="row">
+            <input type="text" name="city" id="search" class="form-control search" placeholder="Zmień miasto">
+        </div>
+        <div class="app-block d-flex flex-row align-items-center justify-content-center  col-sm-12">
+            <div><img src="img/amcharts_weather_icons_1.0.0/animated/day.svg" alt="ikona słońca"></div>
+            <div class="desc">
+                <h2 class="city-name">Bydgoszcz</h2>
+                <p class="temperature">10°C</p>
+                <p class="weather">Słonecznie</p>
+            </div>
+
+        </div>
+        <div class="row days d-flex flex-row align-items-center justify-content-between">
+            <div class=" pager col-sm-1 previous"><a href="#"><i class="fas fa-chevron-left"></a></i></div>
+
+            <div class="col-sm-2 day d-flex flex-column align-items-center">
+                <span>Dzień</span>
+                <span>ikonka</span>
+                <span>Temperatura</span>
+                <span>Wiaterek</span>
+            </div>
+            <div class="col-sm-2 day d-flex flex-column align-items-center">
+                <span>Dzień</span>
+                <span>ikonka</span>
+                <span>Temperatura</span>
+                <span>Wiaterek</span>
+            </div>
+            <div class="col-sm-2 day d-flex flex-column align-items-center">
+                <span>Dzień</span>
+                <span>ikonka</span>
+                <span>Temperatura</span>
+                <span>Wiaterek</span>
+            </div>
+            <div class="pager col-sm-1 previous"><a href="#"><i class="fas fa-chevron-right"></a></i></div>
+        </div>
+
+</body>
+
+</html>

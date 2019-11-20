@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: rgba(19, 17, 17, 0.7);
+}
+
+.fa,
+.fas {
+    font-size: 40px;
+}
+
+.main {
+    height: 100vh;
+    background-image: url(img/cloud-4525968_1920.jpg)
+}
+
+input {
+    margin: 50px auto 20px auto;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.app-block {
+    max-width: 70vw;
+    padding: 20px 0;
+    margin: 30px auto;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(19, 17, 17, 0.5);
+}
+
+.app-block img {
+    width: 300px;
+}
+
+
+
+.city-name {
+    font-size: 45px;
+    font-weight: 300;
+}
+
+.temperature {
+    font-size: 120px;
+}
+
+.weather {
+    font-size: 20px;
+
+}
+
+.days {
+    margin-top: 70px;
+}
+
+.day {
+    padding: 20px 0 20px 0;
+    background-color: rgba(19, 17, 17, 0.2);
+    color: #fff
+}
+
+.table {
+    margin: 0 20px 30px 20px;
+    max-width: 300px;
+    padding: 20px;
+    font-size: 13px;
+    border-radius: 5%;
+    color: #ffffff;
+}
