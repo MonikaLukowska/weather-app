@@ -20,11 +20,15 @@
             <input type="text" name="city" id="search" class="form-control search" placeholder="Zmień miasto">
         </div>
         <div class="app-block d-flex flex-row align-items-center justify-content-center  col-sm-12">
-            <div><img src="img/amcharts_weather_icons_1.0.0/animated/day.svg" alt="ikona słońca"></div>
+            <div><img id="main-icon" src="img/amcharts_weather_icons_1.0.0/animated/day.svg" alt="ikona słońca"></div>
             <div class="desc">
                 <h2 class="city-name">Bydgoszcz</h2>
                 <p class="temperature">10°C</p>
                 <p class="weather">Słonecznie</p>
+                <div class="row">
+                    <span class="col humidity"></span>
+                    <span class="col wind"></span>
+                </div>
             </div>
 
         </div>
@@ -51,7 +55,7 @@
             </div>
             <div class="pager col-sm-1 previous"><a href="#"><i class="fas fa-chevron-right"></a></i></div>
         </div>
-
+        <script src="main.js"></script>
 </body>
 
 </html>

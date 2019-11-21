@@ -22,7 +22,12 @@ a {
 
 .main {
     height: 100vh;
-    background-image: url(img/cloud-4525968_1920.jpg)
+    background: rgb(0, 127, 255);
+    background: linear-gradient(90deg, rgba(0, 127, 255, 1) 44%, rgba(148, 187, 233, 1) 100%);
+    /*background-image: url(img/blue\ sky.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;*/
+
 }
 
 input {
