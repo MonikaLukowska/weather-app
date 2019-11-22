@@ -3,8 +3,64 @@
     padding: 0;
 }
 
+body.sunny {
+    background-image: linear-gradient(to left top, #ff4b4e, #ff932d, #ffb011, #fcd71d);
+}
+
+body.cloudy {
+    background-image: url(img/cloudy.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body.rainy {}
+
+body.snowy {
+    background-image: url(img/snowfall-201496_1920.jpg);
+    background-position: center right;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body.stormy {
+    background-image: url(img/storm.jpg);
+    background-position: center right;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body.night {
+    background-image: url(img/night.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 body {
+    height: 100vh;
     font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1.5px;
+    background-image: linear-gradient(to left top, #ff4b4e, #ff932d, #ffb011, #fcd71d)
+}
+
+.form-control {
+    margin: 50px auto 20px auto;
+    max-width: 400px;
+    background-color: rgba(19, 17, 17, 0.2);
+}
+
+.form-control::placeholder {
+    color: #fff;
+    text-align: center;
+}
+
+.welcome {
+    max-width: 400px;
+    margin: 50px auto 20px auto;
+    text-align: center;
+    color: #fff;
+    font-size: 35px;
+    font-weight: 200;
+    letter-spacing: 1.5px;
 }
 
 p {
@@ -12,28 +68,12 @@ p {
 }
 
 a {
-    color: rgba(19, 17, 17, 0.7);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .fa,
 .fas {
     font-size: 40px;
-}
-
-.main {
-    height: 100vh;
-    background: rgb(0, 127, 255);
-    background: linear-gradient(90deg, rgba(0, 127, 255, 1) 44%, rgba(148, 187, 233, 1) 100%);
-    /*background-image: url(img/blue\ sky.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;*/
-
-}
-
-input {
-    margin: 50px auto 20px auto;
-    max-width: 400px;
-    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .app-block {
@@ -42,11 +82,11 @@ input {
     margin: 30px auto;
     text-align: center;
     color: #fff;
-    background-color: rgba(19, 17, 17, 0.5);
+    background-color: rgba(64, 64, 64, 0.5);
 }
 
 .app-block img {
-    width: 300px;
+    width: 200px;
 }
 
 
@@ -54,6 +94,7 @@ input {
 .city-name {
     font-size: 45px;
     font-weight: 300;
+
 }
 
 .temperature {
@@ -61,8 +102,9 @@ input {
 }
 
 .weather {
+    margin-bottom: 15px;
     font-size: 20px;
-
+    color: rgba(255, 255, 255, 0.7)
 }
 
 .days {
@@ -71,7 +113,7 @@ input {
 
 .day {
     padding: 20px 0 20px 0;
-    background-color: rgba(19, 17, 17, 0.2);
+    background-color: rgba(65, 64, 64, 0.2);
     color: #fff
 }
 
