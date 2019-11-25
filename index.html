@@ -17,7 +17,7 @@
 <body>
     <div class="container-fluid main">
         <div class="row">
-            <h1 class="welcome">Twoja Pogoda</h1>
+            <h1 class="welcome">Twoja <span>Pogoda</span></h1>
         </div>
         <div class="row">
             <input type="text" name="city" id="search" class="form-control search" placeholder="Podaj nazwę miasta">
@@ -25,17 +25,60 @@
         <div class="app-block d-flex flex-row align-items-center justify-content-center  col-sm-12">
             <div><img id="main-icon" src="img/sun icon.png" alt="ikona pogodowa"></div>
             <div class="desc">
-                <h2 class="city-name">Bydgoszcz</h2>
-                <p class="temperature">10°C</p>
-                <p class="weather">Słonecznie</p>
+                <h2 class="city-name" id="city-name">Bydgoszcz</h2>
+                <p class="temperature" id="temperature">10°C</p>
+                <p class="weather" id="weather">Słonecznie</p>
                 <div class="row">
-                    <span class="col humidity">Wilg: 12</span>
-                    <span class="col wind">Wiatr: 16km/h</span>
+                    <span class="col humidity" id="humidity">Wilg: 12</span>
+                    <span class="col wind" id="wind">Wiatr: 16km/h</span>
                 </div>
             </div>
 
         </div>
-        <div class="row days d-flex flex-row align-items-center justify-content-between">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="slide-wrapper d-flex flex-row align-items-center justify-content-between">
+                        <div class="prev"><i class="fas fa-chevron-left"></i></div>
+                        <div class="slide-container days d-flex flex-row align-items-center justify-content-around">
+                            <div class="item col-sm-2 day d-flex flex-column align-items-center">
+                                <span>Dzień</span>
+                                <span>ikonka</span>
+                                <span>Temperatura</span>
+                                <span>Wiaterek</span>
+                            </div>
+                            <div class="item col-sm-2 day d-flex flex-column align-items-center">
+                                <span>Dzień</span>
+                                <span>ikonka</span>
+                                <span>Temperatura</span>
+                                <span>Wiaterek</span>
+                            </div>
+                            <div class="item day col-sm-2 d-flex flex-column align-items-center">
+                                <span>Dzień</span>
+                                <span>ikonka</span>
+                                <span>Temperatura</span>
+                                <span>Wiaterek</span>
+                            </div>
+                            <div class="item day col-sm-2 d-flex flex-column align-items-center">
+                                <span>Dzień</span>
+                                <span>ikonka</span>
+                                <span>Temperatura</span>
+                                <span>Wiaterek</span>
+                            </div>
+                            <div class="item day col-sm-2 d-flex flex-column align-items-center">
+                                <span>Dzień</span>
+                                <span>ikonka</span>
+                                <span>Temperatura</span>
+                                <span>Wiaterek</span>
+                            </div>
+                        </div>
+                        <div class="next"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="row days d-flex flex-row align-items-center justify-content-between">
             <div class=" pager col-sm-1 previous"><a href="#"><i class="fas fa-chevron-left"></a></i></div>
 
             <div class="col-sm-2 day d-flex flex-column align-items-center">
@@ -50,15 +93,20 @@
                 <span>Temperatura</span>
                 <span>Wiaterek</span>
             </div>
-            <div class="col-sm-2 day d-flex flex-column align-items-center">
+            <div class="day col-sm-2 d-flex flex-column align-items-center">
                 <span>Dzień</span>
                 <span>ikonka</span>
                 <span>Temperatura</span>
                 <span>Wiaterek</span>
             </div>
             <div class="pager col-sm-1 previous"><a href="#"><i class="fas fa-chevron-right"></a></i></div>
-        </div>
-        <script src="main.js"></script>
+        </div>-->
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
