@@ -40,27 +40,6 @@ function getWeather(cityId) {
         })
 }
 
-// function getForecast(cityId) {
-//     const key = '5480f732e4b00a16aa00aaf7e311ee62';
-//     fetch(`https://api.openweathermap.org/data/2.5/forecast?id=${cityId}&appid=${key}`)
-//         .then(response => response.json())
-//         .then((data) => {
-//             displayForecast(data)
-//             //put data from api
-//             function displayForecast(data) {
-//                 console.log(data);
-//                 for (let value of [0, 1, 2, 3, 4]) {
-//                     document.getElementById(`day${value+1}`).innerHTML = data.list[value*8].dt_txt;
-//                     document.getElementById(`icon${value+1}`).src = `http://openweathermap.org/img/wn/${data.list[value*8].weather[0].icon}@2x.png`
-//                     document.getElementById(`temp${value+1}`).innerHTML = Math.round(parseFloat(data.list[value*8].main.temp) - 273.15) + '&deg;';
-//                     document.getElementById(`wind${value+1}`).innerHTML = `Wiatr: ${data.list[value*8].wind.speed}km/h`;
-//                     console.log(value);
-//                 }
-//             }
-
-//         })
-// }
-
 
 // function getForecast(cityId) {
 
