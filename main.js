@@ -1,19 +1,25 @@
-let cityId = 420006353;
+//let cityId = 2643743;
+
 
 //fetch api
-function getWeather(cityId) {
-    const key = '5480f732e4b00a16aa00aaf7e311ee62';
-    fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=${key}`)
-        .then(response => response.json())
+document.addEventListener('DOMContentLoaded', function () {
+    
+    const btn = document.getElementById("submit");
+    btn.addEventListener("click", function() {
+        const city = ((document.getElementById("search")||{}).value)||"";
+        
+        const url = `http://api.openweathermap.org/data/2.5/weather?q=` + city + `&units=metric&appid=de7a1829247078d4fed1cb801cd2f95d`;
+        fetch(url)
+      .then(response => response.json())
         .then((data) => {
             displayWeather(data)
             //put data from api
             function displayWeather(data) {
-                const celcius = Math.round(parseFloat(data.main.temp) - 273.15);
+                
                 const icon = data.weather[0].icon;
 
                 document.getElementById('city-name').innerHTML = data.name;
-                document.getElementById('temperature').innerHTML = celcius + '&deg;';
+                document.getElementById('temperature').innerHTML = Math.ceil(data.main.temp) + '&deg;';
                 document.getElementById('weather').innerHTML = data.weather[0].description;
                 document.getElementById('wind').innerHTML = `Wiatr: ${data.wind.speed}km/h`;
                 document.getElementById('humidity').innerHTML = `Wilgotność: ${data.main.humidity}%`;
@@ -38,8 +44,9 @@ function getWeather(cityId) {
             }
 
         })
-}
-getWeather(cityId);
+})
+});
+//getWeather(cityId);
 
 
 $('.slide-container').slick({
@@ -52,3 +59,36 @@ $('.slide-container').slick({
     prevArrow: $('.prev'),
 
 });
+
+// const endpoint = 'https://raw.githubusercontent.com/babel2008/Pogoda2/master/cities.json';
+// const cities = [];
+// fetch(endpoint)
+//     .then(blob => blob.json())
+//     .then(data => cities.push(...data))
+
+// function findMatches(wordToMatch, cities) {
+//     return cities.filter(place => {
+//         const regex = new RegExp(wordToMatch, 'gi');
+//         return place.city.match(regex)
+//     });
+// }
+
+// function displayMatches() {
+//     const matchArray = findMatches(this.value, cities);
+//     const html = matchArray.map(place => {
+//         const regex = new RegExp(this.value, 'gi');
+//         const cityName = place.city.replace(regex, `<span class="h1">${this.value}</span>`);
+//         return `
+//         <li>
+//             <span class="name">${cityName}</span>
+//         </li>
+//         `;
+//     }).join('');
+//     suggestions.innerHTML = html;
+// }
+
+// const searchInput = document.querySelector('.search');
+// const suggestions = document.querySelector('.suggestions');
+
+// searchInput.addEventListener('change', displayMatches);
+// searchInput.addEventListener('keyup', displayMatches);
