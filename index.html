@@ -20,52 +20,60 @@
             <h1 class="welcome">Twoja <span>Pogoda</span></h1>
         </div>
         <div class="row">
-            <input type="text" name="city" id="search" class="form-control search" placeholder="Podaj nazwę miasta">
+            <form>
+                <input type="text" name="city" id="search" class="form-control search" placeholder="Podaj nazwę miasta">
+                <ype="submi" type="submit" class="button btn btn-outline-secondary" id="submit">Sprawdź!
+                </ype="submi">
+            </form>
         </div>
-        <div class="app-block d-flex flex-row align-items-center justify-content-center  col-sm-12">
-            <div><img id="main-icon" src="img/sun icon.png" alt="ikona pogodowa"></div>
+        <div id="app-block" class="app-block col-sm-12">
+            <div class="icons"><img id="main-icon" src="" alt="ikona pogodowa">
+                <div class="row">
+                    <div class="col humidity"><img src="/img/iconmonstr-weather-64-24.png" alt=""><span id="humidity">:
+                            12</span></div>
+                    <div class="col wind"><img src="/img/iconmonstr-weather-129-24.png" alt=""><span id="wind"></span>
+                    </div>
+                </div>
+            </div>
             <div class="desc">
                 <h2 class="city-name" id="city-name">Bydgoszcz</h2>
                 <p class="temperature" id="temperature">10°C</p>
                 <p class="weather" id="weather">Słonecznie</p>
-                <div class="row">
-                    <span class="col humidity" id="humidity">Wilg: 12</span>
-                    <span class="col wind" id="wind">Wiatr: 16km/h</span>
-                </div>
+
             </div>
 
         </div>
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="slide-wrapper d-flex flex-row align-items-center justify-content-between">
+                    <div id="slider" class="slide-wrapper ">
                         <div class="prev"><i class="fas fa-chevron-left"></i></div>
                         <div class="slide-container days d-flex flex-row align-items-center justify-content-around">
-                            <div class="item col-sm-2 day d-flex flex-column align-items-center">
+                            <div id="day" class="item col-sm-2 day d-flex flex-column align-items-center">
                                 <span>Dzień</span>
                                 <span>ikonka</span>
                                 <span>Temperatura</span>
                                 <span>Wiaterek</span>
                             </div>
-                            <div class="item col-sm-2 day d-flex flex-column align-items-center">
+                            <div id="day" class="item col-sm-2 day d-flex flex-column align-items-center">
                                 <span>Dzień</span>
                                 <span>ikonka</span>
                                 <span>Temperatura</span>
                                 <span>Wiaterek</span>
                             </div>
-                            <div class="item day col-sm-2 d-flex flex-column align-items-center">
+                            <div id="day" class="item day col-sm-2 d-flex flex-column align-items-center">
                                 <span>Dzień</span>
                                 <span>ikonka</span>
                                 <span>Temperatura</span>
                                 <span>Wiaterek</span>
                             </div>
-                            <div class="item day col-sm-2 d-flex flex-column align-items-center">
+                            <div id="day" class="item day col-sm-2 d-flex flex-column align-items-center">
                                 <span>Dzień</span>
                                 <span>ikonka</span>
                                 <span>Temperatura</span>
                                 <span>Wiaterek</span>
                             </div>
-                            <div class="item day col-sm-2 d-flex flex-column align-items-center">
+                            <div id="day" class="item day col-sm-2 d-flex flex-column align-items-center">
                                 <span>Dzień</span>
                                 <span>ikonka</span>
                                 <span>Temperatura</span>

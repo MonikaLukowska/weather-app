@@ -4,7 +4,6 @@
 }
 
 body {
-    max-height: 100vh;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1.5px;
     background-image: url(img/plain.png);
@@ -71,15 +70,44 @@ body.night {
 
 
 
-.form-control {
+form {
+    display: flex;
     margin: 50px auto 20px auto;
-    max-width: 400px;
-    background-color: rgba(255, 255, 255, 0.2);
+    width: 600px;
+
+}
+
+form [type="text"] {
+    width: 400px;
+    margin: 0 10px;
+    border-radius: 0;
 }
 
 .form-control::placeholder {
-    color: #fff;
+    color: #ccc;
     text-align: center;
+}
+
+.btn-outline-secondary {
+    color: #fff;
+}
+
+.btn {
+    border-radius: 0;
+    background-color: #468ac5;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #fff;
+    color: #468ac5
+}
+
+.btn .btn-primary {
+    padding: 0 10px;
+    background-color: rgba(255, 255, 255, 0.603);
+    color: rgba(255, 255, 255, 0.521);
+
 }
 
 .welcome {
@@ -93,7 +121,7 @@ body.night {
 }
 
 .welcome span {
-    color: rgba(42, 236, 204, 0.5);
+    color: rgba(223, 104, 134, 0.973);
     font-weight: 600;
 }
 
@@ -103,7 +131,7 @@ p {
 
 .prev:hover,
 .next:hover {
-    color: rgba(13, 145, 123, 0.3);
+    color: rgba(223, 104, 134, 0.973);
 }
 
 .fa,
@@ -112,7 +140,15 @@ p {
 }
 
 .app-block {
-    max-width: 70vw;
+    display: none;
+
+}
+
+.app-block.active {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 60vw;
     padding: 20px 0;
     margin: 30px auto;
     text-align: center;
@@ -120,11 +156,20 @@ p {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
+
+
 .app-block img {
     width: 200px;
 }
 
+.app-block .icons {
+    width: 40%;
+}
 
+.app-block .humidity img,
+.app-block .wind img {
+    width: 30%;
+}
 
 .city-name {
     font-size: 45px;
@@ -133,7 +178,7 @@ p {
 }
 
 .temperature {
-    font-size: 120px;
+    font-size: 100px;
 
 }
 
@@ -143,17 +188,29 @@ p {
     color: rgba(255, 255, 255, 0.7)
 }
 
+.app-block .icons {
+    color: rgba(255, 255, 255, 0.7);
+}
+
 /*slider*/
+
 .slide-wrapper {
+    display: none;
+}
+
+.slide-wrapper.show {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 90vw;
     height: 20vh;
 }
 
 .days,
 .slide-container {
-    margin: 70px auto 50px auto;
+    /*margin: 70px auto 50px auto;*/
     width: 70vw;
-    height: 30vh;
+    height: 20vh;
     overflow: hidden;
 }
 
@@ -169,7 +226,8 @@ p {
     margin: 10px;
     background-color: rgba(255, 255, 255, 0.2);
     width: 30vw;
-    color: #fff
+    color: #fff;
+    /*border: solid 2px red;*/
 }
 
 .slick-list {
@@ -177,6 +235,8 @@ p {
 
     display: block;
     overflow: hidden;
+    width: 70vw;
+    max-height: 20vh;
 
     margin: 0;
     padding: 0;
