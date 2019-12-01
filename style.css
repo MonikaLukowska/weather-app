@@ -4,7 +4,7 @@
 }
 
 body {
-    min-height: 100vh;
+    max-height: 100vh;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1.5px;
     background-image: url(img/plain.png);
@@ -146,6 +146,7 @@ p {
 /*slider*/
 .slide-wrapper {
     width: 90vw;
+    height: 20vh;
 }
 
 .days,
