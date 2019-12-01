@@ -40,18 +40,6 @@ function getWeather(cityId) {
         })
 }
 
-
-// function getForecast(cityId) {
-
-//         document.getElementById(`day1`).innerHTML = "Poniedziałek";
-//         document.getElementById(`icon1`).src = 'img\amcharts_weather_icons_1.0.0\static\day.svg';
-//         document.getElementById(`temp1`).innerHTML = "20";
-//         document.getElementById(`wind1`).innerHTML = `Wiatr: 50km/h`;
-//         document.getElementById(`day5`).innerHTML = "Piątek";
-//         document.getElementById(`icon5`).src = 'img\amcharts_weather_icons_1.0.0\static\day.svg';
-//         document.getElementById(`temp5`).innerHTML = "20";
-//         document.getElementById(`wind5`).innerHTML = `Wiatr: 50km/h`;
-//     }
                 
 function getForecast(cityId) {
     const key = '5480f732e4b00a16aa00aaf7e311ee62';
@@ -59,14 +47,23 @@ function getForecast(cityId) {
         .then(response => response.json())
         .then((data) => {
             displayForecast(data)
+            //change string to day name
+            function changeDate(value) {
+                var days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
+                var date_str = data.list[value*8-1].dt_txt;
+                var d = new Date(date_str);
+                var dayName = days[d.getDay()];
+                return dayName;
+            }
             //put data from api
             function displayForecast(data) {
                 console.log(data);
-                for (let value of [0, 1, 2, 3, 4]) {
-                    document.getElementById(`day${value+1}`).innerHTML = data.list[value*8].dt_txt;
-                    document.getElementById(`icon${value+1}`).src = `http://openweathermap.org/img/wn/${data.list[value*8].weather[0].icon}@2x.png`
-                    document.getElementById(`temp${value+1}`).innerHTML = Math.round(parseFloat(data.list[value*8].main.temp) - 273.15) + '&deg;';
-                    document.getElementById(`wind${value+1}`).innerHTML = `Wiatr: ${data.list[value*8].wind.speed}km/h`;
+                for (let value of [1, 2, 3, 4, 5]) {
+                    document.getElementById(`day_name${value}`).innerHTML = changeDate(value);
+                    document.getElementById(`day${value}`).innerHTML = data.list[value*8-1].dt_txt.slice(0, 16);
+                    document.getElementById(`icon${value}`).src = `http://openweathermap.org/img/wn/${data.list[value*8-1].weather[0].icon}@2x.png`
+                    document.getElementById(`temp${value}`).innerHTML = Math.round(parseFloat(data.list[value*8-1].main.temp) - 273.15) + '&deg;C';
+                    document.getElementById(`wind${value}`).innerHTML = `Wiatr: ${data.list[value*8-1].wind.speed}km/h`;
                     console.log(value);
                 }
             }
