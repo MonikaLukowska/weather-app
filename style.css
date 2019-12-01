@@ -71,15 +71,43 @@ body.night {
 
 
 
-.form-control {
+form {
+    display: flex;
     margin: 50px auto 20px auto;
-    max-width: 400px;
-    background-color: rgba(255, 255, 255, 0.2);
+    width: 600px;
+
+}
+
+form [type="text"] {
+    width: 400px;
+    margin: 0 10px;
+    border-radius: 0;
 }
 
 .form-control::placeholder {
-    color: #fff;
+    color: #ccc;
     text-align: center;
+}
+
+.btn-outline-secondary {
+    color: #fff;
+}
+
+.btn {
+    border-radius: 0;
+    background-color: #6c757d
+}
+
+.btn:hover {
+    background-color: #fff;
+    color: #6c757d;
+}
+
+.btn .btn-primary {
+    padding: 0 10px;
+    background-color: #fff;
+    color: #fff;
+
 }
 
 .welcome {
@@ -261,4 +289,3 @@ p {
 
     border: 1px solid transparent;
 }
-
