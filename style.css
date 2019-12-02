@@ -3,7 +3,13 @@
     padding: 0;
 }
 
+@supports not (font-variation-settings: normal) {
+    @import url(//fonts.googleapis.com/css?family=Open+Sans);
+}
+
+
 body {
+    min-height: 100vh;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1.5px;
     background-image: url(img/plain.png);
@@ -16,7 +22,7 @@ body.sunny {
     min-height: 100vh;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1.5px;
-    background-image: url(img/sun.png);
+    background-image: url(img/sun.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -34,13 +40,13 @@ body.rainy {
     min-height: 100vh;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1.5px;
-    background-image: url(img/rain.png);
+    background-image: url(img/rain.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 body.snowy {
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1.5px;
     background-image: url(img/snow.png);
@@ -50,17 +56,17 @@ body.snowy {
 }
 
 body.stormy {
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1.5px;
-    background-image: url(img/storm.png);
+    background-image: url(img/storm.jpg);
     background-position: center right;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 body.night {
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1.5px;
     background-image: url(img/night.png);
@@ -73,14 +79,15 @@ body.night {
 form {
     display: flex;
     margin: 50px auto 20px auto;
-    width: 600px;
+    max-width: 500px;
 
 }
 
 form [type="text"] {
-    width: 400px;
+    width: 300px;
     margin: 0 10px;
     border-radius: 0;
+
 }
 
 .form-control::placeholder {
@@ -94,13 +101,15 @@ form [type="text"] {
 
 .btn {
     border-radius: 0;
-    background-color: #468ac5;
-    border: none;
+    background-color: #fff;
+    border: solid 2px #e46d2e;
+    color: #e46d2e;
+    font-weight: 500;
 }
 
 .btn:hover {
-    background-color: #fff;
-    color: #468ac5
+    background-color: #e46d2e;
+    color: #fff;
 }
 
 .btn .btn-primary {
@@ -111,7 +120,7 @@ form [type="text"] {
 }
 
 .welcome {
-    max-width: 400px;
+
     margin: 50px auto 20px auto;
     text-align: center;
     color: #fff;
@@ -121,8 +130,21 @@ form [type="text"] {
 }
 
 .welcome span {
-    color: rgba(223, 104, 134, 0.973);
-    font-weight: 600;
+    color: #e46d2e;
+    font-weight: 100;
+    font-variation-settings: 'wght'100, 'wdth'85;
+    animation: resize 1.5s infinite linear;
+
+}
+
+@keyframes resize {
+    60% {
+        font-weight: 900;
+    }
+
+    100% {
+        font-weight: 100;
+    }
 }
 
 p {
@@ -131,7 +153,7 @@ p {
 
 .prev:hover,
 .next:hover {
-    color: rgba(223, 104, 134, 0.973);
+    color: rgb(17, 4, 77);
 }
 
 .fa,
@@ -146,51 +168,118 @@ p {
 
 .app-block.active {
     display: flex;
-    align-items: center;
+    position: relative;
+    flex-direction: column;
+    align-items: stretch;
     justify-content: space-around;
-    width: 60vw;
+    width: 700px;
+    height: 400px;
     padding: 20px 0;
-    margin: 30px auto;
+    margin: 130px auto 50px auto;
     text-align: center;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.2);
+    color: rgb(17, 4, 77);
+    background-color: #FFF;
+    border: 1px #fff solid;
+    border-radius: 40%;
+
 }
 
+.app-block::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: -80px;
+    left: calc(50% - 150px);
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #fff;
+    z-index: -1;
+}
 
+.app-block::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -8%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #fff;
+    z-index: -1;
+}
+
+.icons::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: 125%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #fff;
+    z-index: -1;
+}
+
+.top {
+
+    align-items: space-around;
+    justify-content: center;
+}
 
 .app-block img {
-    width: 200px;
+    width: 100%;
+    height: 100%;
 }
 
 .app-block .icons {
-    width: 40%;
+    /*width: 40%;*/
+    font-size: 12px;
+    margin: 0;
 }
+
+.small-icons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+}
+
+
 
 .app-block .humidity img,
 .app-block .wind img {
-    width: 30%;
+    width: 10%;
 }
 
+.left,
+.right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+}
+
+.time,
 .city-name {
-    font-size: 45px;
+    font-size: 30px;
     font-weight: 300;
 
 }
 
 .temperature {
+    /* height: 200px;*/
+    line-height: 100px;
     font-size: 100px;
+    vertical-align: middle;
 
 }
 
-.weather {
-    margin-bottom: 15px;
-    font-size: 20px;
-    color: rgba(255, 255, 255, 0.7)
-}
 
-.app-block .icons {
-    color: rgba(255, 255, 255, 0.7);
-}
 
 /*slider*/
 
@@ -202,15 +291,18 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 20px auto;
     width: 90vw;
-    height: 20vh;
+    height: 30vh;
 }
 
 .days,
 .slide-container {
+    display: flex;
+    flex-wrap: nowrap;
     /*margin: 70px auto 50px auto;*/
     width: 70vw;
-    height: 20vh;
+    height: 25vh;
     overflow: hidden;
 }
 
@@ -224,9 +316,11 @@ p {
 .day {
     padding: 20px 0 20px 0;
     margin: 10px;
-    background-color: rgba(255, 255, 255, 0.2);
-    width: 30vw;
-    color: #fff;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 30%;
+    height: 25vh;
+    color: rgb(17, 4, 77);
     /*border: solid 2px red;*/
 }
 
@@ -236,8 +330,6 @@ p {
     display: block;
     overflow: hidden;
     width: 70vw;
-    max-height: 20vh;
-
     margin: 0;
     padding: 0;
 }
@@ -264,8 +356,8 @@ p {
     position: relative;
     top: 0;
     left: 0;
-
     display: block;
+    height: 20vh;
 }
 
 .slick-track:before,

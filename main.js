@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener("click", function () {
         const city = ((document.getElementById("search") || {}).value) || "";
 
-        const url = `http://api.openweathermap.org/data/2.5/weather?q=` + city + `&units=metric&appid=de7a1829247078d4fed1cb801cd2f95d`;
+        const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},pl&units=metric&appid=de7a1829247078d4fed1cb801cd2f95d`;
         fetch(url)
             .then(response => response.json())
             .then((data) => {
                 displayWeather(data)
-                //put data from api
+                //display data from api
                 function displayWeather(data) {
 
                     const icon = data.weather[0].icon;
@@ -23,21 +23,33 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.getElementById('weather').innerHTML = data.weather[0].description;
                     document.getElementById('wind').innerHTML = `: ${data.wind.speed}km/h`;
                     document.getElementById('humidity').innerHTML = `: ${data.main.humidity}%`;
-                    document.getElementById('main-icon').src = `http://openweathermap.org/img/wn/${icon}@2x.png`
+                    document.getElementById('main-icon').src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
+                    // display time
+                    const weekdays = ['Sunday', 'Monday', 'Tueasday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+                    const d = new Date();
+                    const today = weekdays[d.getDay()];
+                    const hour = d.getHours();
+                    const minute = d.getMinutes();
+                    const time = ("0" + hour).slice(-2) + ":" + ("0" + minute).slice(-2);
+                    const dateTime = `${today}, ${time}`;
+
+                    document.getElementById('time').innerHTML = dateTime;
 
                     //change background
                     const main = data.weather[0].main;
+                    console.log(d.getHours());
 
-
-                    if (main === 'Rain') {
+                    if (main === 'Rain' && (d.getHours() < 19 || d.getHours() > 5)) {
                         document.body.className = 'rainy';
-                    } else if (main === 'Clouds') {
+                    } else if (main === 'Clouds' && (d.getHours() < 19 && d.getHours() > 5)) {
                         document.body.className = 'cloudy';
-                    } else if (main === 'Snow') {
+                    } else if (main === 'Snow' && (d.getHours() < 19 && d.getHours() > 5)) {
                         document.body.className = 'snowy';
-                    } else if (main === 'Thunderstorm') {
+                    } else if (main === 'Thunderstorm' && (d.getHours() < 19 || d.getHours() > 5)) {
                         document.body.className = 'stormy';
+                    } else if (d.getHours() > 19 || d.getHours() < 6) {
+                        document.body.className = 'night';
                     } else {
                         document.body.className = 'sunny';
                     }
@@ -49,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('slider').classList.add('show');
 
             })
+            .catch(error => alert("Please enter polish city name"));
     })
 })
 
@@ -58,7 +71,7 @@ $('.slide-container').slick({
     slidesToScroll: 1,
     autoplay: true,
     useCss: true,
-    infinite: false,
+    infinite: slides.length > 2,
     autoplaySpeed: 2000,
     nextArrow: $('.next'),
     prevArrow: $('.prev'),
