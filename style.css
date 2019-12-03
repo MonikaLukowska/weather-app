@@ -281,6 +281,7 @@ p {
 
 
 
+
 /*slider*/
 
 .slide-wrapper {
@@ -293,7 +294,7 @@ p {
     justify-content: space-between;
     margin: 20px auto;
     width: 90vw;
-    height: 30vh;
+    margin: 0px auto;
 }
 
 .days,
@@ -302,7 +303,7 @@ p {
     flex-wrap: nowrap;
     /*margin: 70px auto 50px auto;*/
     width: 70vw;
-    height: 25vh;
+    height: 40vh;
     overflow: hidden;
 }
 
@@ -310,7 +311,7 @@ p {
 .next {
     color: #fff;
     width: 10%;
-    margin: 0;
+    margin: 0px;
 }
 
 .day {
