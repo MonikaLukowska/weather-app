@@ -325,6 +325,7 @@ p {
     /*border: solid 2px red;*/
 }
 
+
 .slick-list {
     position: relative;
 
@@ -379,8 +380,7 @@ p {
 .slick-slide {
     display: none;
     float: left;
-
-    height: 100%;
+    height: auto;
     min-height: 1px;
 }
 

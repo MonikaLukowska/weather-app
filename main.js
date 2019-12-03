@@ -1,14 +1,11 @@
-//let cityId = 2643743;
-
-
 //fetch api
 document.addEventListener('DOMContentLoaded', function () {
 
     const btn = document.getElementById("submit");
     btn.addEventListener("click", function () {
         const city = ((document.getElementById("search") || {}).value) || "";
-
         const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},pl&units=metric&appid=de7a1829247078d4fed1cb801cd2f95d`;
+        const url_fore = `http://api.openweathermap.org/data/2.5/forecast?q=${city},pl&units=metric&appid=de7a1829247078d4fed1cb801cd2f95d`;
         fetch(url)
             .then(response => response.json())
             .then((data) => {
@@ -19,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const icon = data.weather[0].icon;
 
                     document.getElementById('city-name').innerHTML = data.name;
-                    document.getElementById('temperature').innerHTML = Math.ceil(data.main.temp) + '&deg;';
+                    document.getElementById('temperature').innerHTML = Math.ceil(data.main.temp) + '&deg;C';
                     document.getElementById('weather').innerHTML = data.weather[0].description;
                     document.getElementById('wind').innerHTML = `: ${data.wind.speed}km/h`;
                     document.getElementById('humidity').innerHTML = `: ${data.main.humidity}%`;
@@ -33,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     const minute = d.getMinutes();
                     const time = ("0" + hour).slice(-2) + ":" + ("0" + minute).slice(-2);
                     const dateTime = `${today}, ${time}`;
-
                     document.getElementById('time').innerHTML = dateTime;
 
                     //change background
@@ -56,6 +52,33 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
             })
+
+        fetch(url_fore)
+            .then(response => response.json())
+            .then((data) => {
+                displayForecast(data)
+                //change string to day name
+                function changeDate(value) {
+                    const days = ['Sunday', 'Monday', 'Tueasday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                    const date_str = data.list[value*8-1].dt_txt;
+                    const d = new Date(date_str);
+                    const dayName = days[d.getDay()];
+                    return dayName;
+                }
+                //put data from api
+                function displayForecast(data) {
+                    console.log(data);
+                    for (let value of [1, 2, 3, 4, 5]) {
+                        document.getElementById(`day_name${value}`).innerHTML = changeDate(value);
+                        document.getElementById(`day${value}`).innerHTML = data.list[value*8-1].dt_txt.slice(0, 16);
+                        document.getElementById(`icon${value}`).src = `http://openweathermap.org/img/wn/${data.list[value*8-1].weather[0].icon}@2x.png`
+                        document.getElementById(`temp${value}`).innerHTML = Math.ceil(data.list[value*8-1].main.temp) + '&deg;C';
+                        document.getElementById(`wind${value}`).innerHTML = `Wiatr: ${data.list[value*8-1].wind.speed}km/h`;
+                    }
+                }
+
+            })
+
 
             .then(() => {
                 document.getElementById('app-block').classList.add('active');
