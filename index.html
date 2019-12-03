@@ -17,30 +17,42 @@
 <body>
     <div class="container-fluid main">
         <div class="row">
-            <h1 class="welcome">Twoja <span>Pogoda</span></h1>
+            <h1 class="welcome">Your <span>Weather </span>App</h1>
         </div>
         <div class="row">
-            <input type="text" name="city" id="search" class="form-control search" placeholder="Podaj nazwę miasta">
+            <form>
+                <input type="text" name="city" id="search" class="form-control search" placeholder="Podaj nazwę miasta">
+                <ype="submi" type="submit" class="button btn btn-outline-secondary" id="submit">Go!
+                </ype="submi">
+            </form>
         </div>
-        <div class="app-block d-flex flex-row align-items-center justify-content-center  col-sm-12">
-            <div><img id="main-icon" src="img/sun icon.png" alt="ikona pogodowa"></div>
-            <div class="desc">
-                <h2 class="city-name" id="city-name">Bydgoszcz</h2>
-                <p class="temperature" id="temperature">10°C</p>
-                <p class="weather" id="weather">Słonecznie</p>
-                <div class="row">
-                    <span class="col humidity" id="humidity">Wilg: 12</span>
-                    <span class="col wind" id="wind">Wiatr: 16km/h</span>
+        <div id="app-block" class="app-block">
+            <div class="row top">
+                <div class="col left">
+                    <div id="time" class="row time"></div>
+                    <div class="row icons"><img id="main-icon" src="" alt="ikona pogodowa"></div>
+                </div>
+
+                <div class="col right">
+                    <h2 class="city-name" id="city-name">Bydgoszcz</h2>
+                    <p class="temperature" id="temperature">10°C</p>
                 </div>
             </div>
-
+            <div class="row small-icons">
+                <div class="col humidity"><img src="img/humidity.svg" alt=""><span id="humidity">:
+                        12</span></div>
+                <div class="col wind"><img src="img/wind.svg" alt=""><span id="wind"></span>
+                </div>
+                <div class="col weather" id="weather">Słonecznie</div>
+            </div>
         </div>
         <div class="container">
             <div class="row">
                     <h1 class="welcome">Prognoza<span> na kolejne dni</span></h1>
                 <div class="col">
-                    <div class="slide-wrapper d-flex flex-row align-items-center justify-content-between">
+                    <div id="slider" class="slide-wrapper ">
                         <div class="prev"><i class="fas fa-chevron-left"></i></div>
+
                         <div class="slide-container days d-flex flex-row align-items-center justify-content-around">
                             <div class="item col-md-4 day d-flex flex-column align-items-center">
                                 <span id="day_name1">Dzień1</span>
@@ -75,7 +87,7 @@
                                 <span id="day5">Dzień5</span>
                                 <span><img id="icon5" src="" alt="ikona pogodowa"></span>
                                 <span id="temp5">Temperatura</span>
-                                <span id="wind5">Wiaterek</span>
+                              <span id="wind5">Wiaterek</span>
                             </div>
                         </div>
                         <div class="next"><i class="fas fa-chevron-right"></i></div>

@@ -1,51 +1,63 @@
-let cityId = 420006353;
+//let cityId = 2643743;
+
 
 //fetch api
-function getWeather(cityId) {
-    const key = '5480f732e4b00a16aa00aaf7e311ee62';
-    fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=${key}`)
-        .then(response => response.json())
-        .then((data) => {
-            displayWeather(data)
-            //put data from api
-            function displayWeather(data) {
-                const celcius = Math.round(parseFloat(data.main.temp) - 273.15);
-                const icon = data.weather[0].icon;
+document.addEventListener('DOMContentLoaded', function () {
 
-                document.getElementById('city-name').innerHTML = data.name;
-                document.getElementById('temperature').innerHTML = celcius + '&deg;';
-                document.getElementById('weather').innerHTML = data.weather[0].description;
-                document.getElementById('wind').innerHTML = `Wiatr: ${data.wind.speed}km/h`;
-                document.getElementById('humidity').innerHTML = `Wilgotność: ${data.main.humidity}%`;
-                document.getElementById('main-icon').src = `http://openweathermap.org/img/wn/${icon}@2x.png`
+    const btn = document.getElementById("submit");
+    btn.addEventListener("click", function () {
+        const city = ((document.getElementById("search") || {}).value) || "";
 
+        const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},pl&units=metric&appid=de7a1829247078d4fed1cb801cd2f95d`;
+        fetch(url)
+            .then(response => response.json())
+            .then((data) => {
+                displayWeather(data)
+                //display data from api
+                function displayWeather(data) {
 
-                //change background
-                const main = data.weather[0].main;
+                    const icon = data.weather[0].icon;
 
+                    document.getElementById('city-name').innerHTML = data.name;
+                    document.getElementById('temperature').innerHTML = Math.ceil(data.main.temp) + '&deg;';
+                    document.getElementById('weather').innerHTML = data.weather[0].description;
+                    document.getElementById('wind').innerHTML = `: ${data.wind.speed}km/h`;
+                    document.getElementById('humidity').innerHTML = `: ${data.main.humidity}%`;
+                    document.getElementById('main-icon').src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
-                if (main === 'Rain') {
-                    document.body.className = 'rainy';
-                } else if (main === 'Clouds') {
-                    document.body.className = 'cloudy';
-                } else if (main === 'Snow') {
-                    document.body.className = 'snowy';
-                } else if (main === 'Thunderstorm') {
-                    document.body.className = 'stormy';
-                } else {
-                    document.body.className = 'sunny';
+                    // display time
+                    const weekdays = ['Sunday', 'Monday', 'Tueasday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+                    const d = new Date();
+                    const today = weekdays[d.getDay()];
+                    const hour = d.getHours();
+                    const minute = d.getMinutes();
+                    const time = ("0" + hour).slice(-2) + ":" + ("0" + minute).slice(-2);
+                    const dateTime = `${today}, ${time}`;
+
+                    document.getElementById('time').innerHTML = dateTime;
+
+                    //change background
+                    const main = data.weather[0].main;
+                    console.log(d.getHours());
+
+                    if (main === 'Rain' && (d.getHours() < 19 || d.getHours() > 5)) {
+                        document.body.className = 'rainy';
+                    } else if (main === 'Clouds' && (d.getHours() < 19 && d.getHours() > 5)) {
+                        document.body.className = 'cloudy';
+                    } else if (main === 'Snow' && (d.getHours() < 19 && d.getHours() > 5)) {
+                        document.body.className = 'snowy';
+                    } else if (main === 'Thunderstorm' && (d.getHours() < 19 || d.getHours() > 5)) {
+                        document.body.className = 'stormy';
+                    } else if (d.getHours() > 19 || d.getHours() < 6) {
+                        document.body.className = 'night';
+                    } else {
+                        document.body.className = 'sunny';
+                    }
                 }
-            }
 
-        })
-}
-
-                
-function getForecast(cityId) {
-    const key = '5480f732e4b00a16aa00aaf7e311ee62';
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?id=${cityId}&appid=${key}`)
-        .then(response => response.json())
-        .then((data) => {
+            })
+            .then((data) =>{
+   
             displayForecast(data)
             //change string to day name
             function changeDate(value) {
@@ -68,13 +80,16 @@ function getForecast(cityId) {
                 }
             }
 
-        })
-}
+       })
+            .then(() => {
+                document.getElementById('app-block').classList.add('active');
+                document.getElementById('slider').classList.add('show');
 
-
-
-getWeather(cityId);
-getForecast(cityId);
+            })
+           
+            .catch(error => alert("Please enter polish city name"));
+    })
+})
 
 
 
@@ -87,4 +102,39 @@ $('.slide-container').slick({
     nextArrow: $('.next'),
     prevArrow: $('.prev'),
 
-});
+})
+
+
+
+// const endpoint = 'https://raw.githubusercontent.com/babel2008/Pogoda2/master/cities.json';
+// const cities = [];
+// fetch(endpoint)
+//     .then(blob => blob.json())
+//     .then(data => cities.push(...data))
+
+// function findMatches(wordToMatch, cities) {
+//     return cities.filter(place => {
+//         const regex = new RegExp(wordToMatch, 'gi');
+//         return place.city.match(regex)
+//     });
+// }
+
+// function displayMatches() {
+//     const matchArray = findMatches(this.value, cities);
+//     const html = matchArray.map(place => {
+//         const regex = new RegExp(this.value, 'gi');
+//         const cityName = place.city.replace(regex, `<span class="h1">${this.value}</span>`);
+//         return `
+//         <li>
+//             <span class="name">${cityName}</span>
+//         </li>
+//         `;
+//     }).join('');
+//     suggestions.innerHTML = html;
+// }
+
+// const searchInput = document.querySelector('.search');
+// const suggestions = document.querySelector('.suggestions');
+
+// searchInput.addEventListener('change', displayMatches);
+// searchInput.addEventListener('keyup', displayMatches);
