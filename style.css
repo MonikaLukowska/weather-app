@@ -132,20 +132,30 @@ form [type="text"] {
 .welcome span {
     color: #e46d2e;
     font-weight: 100;
-    font-variation-settings: 'wght'100, 'wdth'85;
-    animation: resize 1.5s infinite linear;
-
 }
 
-@keyframes resize {
-    60% {
+.welcome span.active {
+
+    animation: grow 1s ease-out;
+    transform-origin: bottom center;
+}
+
+@keyframes grow {
+
+    10%,
+    35% {
+        font-weight: 300;
+
+    }
+
+
+    80% {
         font-weight: 900;
-    }
 
-    100% {
-        font-weight: 100;
     }
 }
+
+
 
 p {
     margin: 0;
@@ -310,7 +320,6 @@ p {
 .prev,
 .next {
     color: #fff;
-    width: 10%;
     margin: 0px;
 }
 
@@ -338,6 +347,10 @@ p {
 
 .slick-list:focus {
     outline: none;
+}
+
+.slick-list.draggable {
+    margin: 0 auto;
 }
 
 .slick-list.dragging {
@@ -388,9 +401,7 @@ p {
     float: right;
 }
 
-.slick-slide img {
-    display: block;
-}
+
 
 .slick-slide.slick-loading img {
     display: none;
